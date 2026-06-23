@@ -7,7 +7,7 @@ pipeline {
                 echo 'Hello World'
             }
         }
-		stage('run linux command') {
+		stage('run command') {
             steps {
                 sh 'date'
 				sh 'cal'
