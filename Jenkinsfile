@@ -1,23 +1,23 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-		stage('run command') {
+    agent any 
+    environment{
+        shyam= 'redhat'
+    }
+	parameters {
+    	string(name: 'person', defaultValue: 'ram mishra', description: 'how r u')
+	}
+    
+    stages {  
+        stage('run linux command') {
             steps {
                 sh 'date'
-				sh 'cal'
+                sh 'echo $shyam'				
             }
 		}
-		stage('run linux command') {
+		stage('check parameter') {
             steps {
-                sh 'echo $BUILD_ID'
-				sh 'cal'
+                sh 'echo $person'			
             }
-        }
-    }
+		}
+	}
 }
